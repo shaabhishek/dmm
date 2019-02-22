@@ -19,3 +19,4 @@ ipynb/synthetic/*.pdf
 *.pkl
 *.txt
 midi/
+env-hrmtpp
