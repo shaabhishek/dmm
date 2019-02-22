@@ -1,7 +1,7 @@
-from datasets.load import loadDataset 
+# from datasets.load import loadDataset 
 import os
 import numpy as np
-from utils.misc import readPickle, savePickle
+# from utils.misc import readPickle, savePickle
 
 def simulateLinearData(N, T, DIM):
     """ Synthetic data generated according to a first order linear Markov process """
@@ -19,7 +19,7 @@ def simulateLinearData(N, T, DIM):
 def loadSyntheticData():
     curdir = os.path.dirname(os.path.realpath(__file__))
     if os.path.exists(curdir+'/synthetic.pkl'): 
-        print 'Reloading...'
+        print ('Reloading...')
         return readPickle(curdir+'/synthetic.pkl')[0]
     """ Generate simple synthetic data """
     params  = {}
@@ -50,25 +50,25 @@ def loadSyntheticData():
         dataset[k]['mask']     = np.ones_like(dataset[k]['tensor'][:,:,0]) 
     dataset['data_type']            = 'real'
     dataset['dim_observations']     = 3
-    savePickle([dataset],curdir+'/synthetic.pkl')
-    print 'Saving...'
+#     savePickle([dataset],curdir+'/synthetic.pkl')
+#     print ('Saving...')
     return dataset
 
-def load(dset):
-    if dset   in ['jsb','nottingham','musedata','piano']:
-        musicdata = loadDataset(dset)
-        dataset   = {}
-        for k in ['train','valid','test']:
-            dataset[k] = {}  
-            dataset[k]['tensor'] = musicdata[k] 
-            dataset[k]['mask']   = musicdata['mask_'+k]
-        dataset['data_type']        = musicdata['data_type']
-        dataset['dim_observations'] = musicdata['dim_observations']
-    elif dset == 'synthetic':
-        dataset = loadSyntheticData()
-    else:
-        raise ValueError('Invalid dataset: '+dset)
-    return dataset
+# def load(dset):
+#     if dset   in ['jsb','nottingham','musedata','piano']:
+#         musicdata = loadDataset(dset)
+#         dataset   = {}
+#         for k in ['train','valid','test']:
+#             dataset[k] = {}  
+#             dataset[k]['tensor'] = musicdata[k] 
+#             dataset[k]['mask']   = musicdata['mask_'+k]
+#         dataset['data_type']        = musicdata['data_type']
+#         dataset['dim_observations'] = musicdata['dim_observations']
+#     elif dset == 'synthetic':
+#         dataset = loadSyntheticData()
+#     else:
+#         raise ValueError('Invalid dataset: '+dset)
+#     return dataset
 
 if __name__=='__main__':
     #data = load('jsb')
