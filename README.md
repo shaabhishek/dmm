@@ -1,3 +1,6 @@
+My implementation: Python 3.6 and Pytorch 1.0.1
+
+---
 # Deep Markov Models
 
 ## Overview 
